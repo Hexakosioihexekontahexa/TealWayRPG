@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Teal_Way_RPG</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="AddOnData\AddOn01\" />
+  </ItemGroup>
+
+</Project>
