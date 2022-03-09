@@ -5,10 +5,11 @@ namespace Teal_Way_RPG.GameData
 {
     public class Town
     {
-        //Implement either: random chain of towns (traveling A-B-C)
-        //          or: pseudo-random chain of towns with randomization of 2 variables and their occasional equality
-        //          (so traveling A-B(C)-D; B-C; A-D is possible (user can choose 1 of 2 towns)) [preferable]
-        //          or: hardcoded defined order of towns [non-preferable]
+        /*Implement either: random chain of towns (traveling A-B-C)
+        /         or: pseudo-random chain of towns with randomization of 2 variables and their occasional equality
+        /         (so traveling A-B(C)-D; B-C; A-D is possible (user can choose 1 of 2 towns)) [preferable]
+        /         or: hardcoded defined order of towns [non-preferable]
+        */
         public int TownSimpleId;
         public string TownId; //## number of implementation
                               // T code
@@ -17,6 +18,7 @@ namespace Teal_Way_RPG.GameData
         public int TownEncounterChance;
         public int TownTrueEncounterSerial; //allows to 100%-ly encounter town upon Traveling action; optional
         public Effect TownSpecialization; //optional
+        public string TownDungeon;
         public bool WasPicked;
         public static string LastTownId;
 

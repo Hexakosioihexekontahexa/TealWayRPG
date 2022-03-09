@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading;
 using Teal_Way_RPG.GameData;
 
@@ -12,20 +13,26 @@ namespace Teal_Way_RPG
         private static Random random = new Random();
         public static ConsoleColor DefaultForeColor = ConsoleColor.Gray;
         public static ConsoleColor DefaultBackColor = ConsoleColor.Black;
+        public static object Text;
+        public static object Input;
 
         /// <summary>
         /// Writes text with line break
         /// </summary>
-        /// <param name="Console Writeline"></param>
         public static void CW(string text)
         {
             Console.WriteLine(text);
         }
 
+
+        public static void CW(object textAsObject)
+        {
+            Console.WriteLine(textAsObject.ToString());
+        }
+
         /// <summary>
         /// Writes text WITHOUT line break
         /// </summary>
-        /// <param name="Console Write"></param>
         public static void Cw(string text)
         {
             Console.Write(text);
@@ -34,7 +41,6 @@ namespace Teal_Way_RPG
         /// <summary>
         /// Writes text FROM new line. Can add extra line.
         /// </summary>
-        /// <param name="Console Write newLine"></param>
         public static void CWL(string text)
         {
             Console.Write(Environment.NewLine + text);
@@ -43,7 +49,6 @@ namespace Teal_Way_RPG
         /// <summary>
         /// Reads input.
         /// </summary>
-        /// <param name="Console Readline"></param>
         public static string CR()
         {
             return Console.ReadLine();
@@ -52,10 +57,17 @@ namespace Teal_Way_RPG
         /// <summary>
         /// Reads first input character.
         /// </summary>
-        /// <param name="Console readKey"></param>
         public static string CK()
         {
             return Console.ReadKey().KeyChar.ToString();
+        }
+
+        /// <summary>
+        /// Reads first input character and returns it in LOWER case
+        /// </summary>
+        public static string CKL()
+        {
+            return Console.ReadKey().KeyChar.ToString().ToLower();
         }
 
         /// <summary>
@@ -64,6 +76,11 @@ namespace Teal_Way_RPG
         public static void Clear()
         {
             Console.Clear();
+        }
+
+        public static StringBuilder SB(object text)
+        {
+            return new StringBuilder(text.ToString());
         }
 
         public static void Sleep(int seconds)
@@ -133,6 +150,39 @@ namespace Teal_Way_RPG
 
             return lineCloser;
         }
+
+        public static void WrongInput()
+        {
+            CW("Wrong input detected. Please, try again!");
+            CR();
+        }
+
+        /// <summary>
+        /// Used for defining Wrong Input validation with specified data.
+        /// </summary>
+        /// <param name="textAsObject">Custom object-wrapped message of choice. Wrap will be auto-deconstructed.</param>
+        /// <param name="keys">Valid keys of choice.</param>
+        /// <returns></returns>
+        public static string WrongInput(object textAsObject, params object[] keys)
+        {
+            //int iterator = 0;
+            StringBuilder result;
+            do
+            {
+                //if (iterator > 0)
+                //{
+                //    Input = UtilsExtra.WrongInputParser(textAsObject.ToString(), keys).Item2;
+                //}
+                Clear();
+                CW("Wrong input detected. Please, try again!");
+                CKL();
+                //iterator = 1;
+                result = SB(UtilsExtra.WrongInputParser(textAsObject.ToString(), keys));
+            } while (result.ToString() == "");
+
+            Clear();
+            return result.ToString();
+        }
     }
 
     public class UtilsExtra : Utils
@@ -194,6 +244,18 @@ namespace Teal_Way_RPG
             //}
 
             return output;
+        }
+
+        public static string WrongInputParser(string text, object[] keys)
+        {
+            Clear();
+            CW(text);
+            Input = CKL();
+            if (keys.Any(key => Input.ToString() == key.ToString()))
+            {
+                return Input.ToString();
+            }
+            return "";
         }
     }
 }

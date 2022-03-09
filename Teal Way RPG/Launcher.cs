@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using Teal_Way_RPG.GameData;
 using Teal_Way_RPG.GameData.ArtifactData;
@@ -33,8 +34,8 @@ namespace Teal_Way_RPG
             ////CW("Please, press any key to continue...");
             ////CR();
             Test(1);
-            Initializer.Initialize();
-            MainMenu.Menu(false);
+            //Initializer.Initialize();
+            //MainMenu.Menu(false);
             //NewGame;
         }
 
@@ -89,6 +90,20 @@ namespace Teal_Way_RPG
                 //Locations.GetLocationById("01LP");
                 CR();
 
+                CW("Trying to parse digit to lower");
+                CWL(CKL());
+                CR();
+                Clear();
+                //while (true)
+                //{
+                    //Question();
+                    //Question();
+                //}
+                StringBuilder text = new StringBuilder("some text");
+
+                text = new StringBuilder("another text");
+                NewGame.Starter();
+
                 for (int i = 0; i < 15; i++)
                 {
                     var output = UtilsExtra.TryParseStringList(list, i, list[0]);
@@ -99,6 +114,25 @@ namespace Teal_Way_RPG
                 CW("WARNING!!!");
                 CR();
             }
+        }
+
+        static void Question()
+        {
+            var text = "Would you press Q or E? [q/e]";
+            CW(text);
+            switch (CKL())
+            {
+                case "q":
+                    CWL("good job");
+                    break;
+                case "e":
+                    CWL("Very nice of you!");
+                    break;
+                default:
+                    WrongInput(text, CKL(),"q", "e");
+                    break;
+            }
+            CR();
         }
 
         static int[] TestExec(int[] list)

@@ -9,8 +9,9 @@ namespace Teal_Way_RPG.BattleData
     {
         public void BattleProcessor()
         {
+            
             CW("##########################################################################################################################");
-            CW($"S");
+            CW($"S:");
             //if ! [[ -z "$numberOfStatusTurns" || "$numberOfStatusTurns" -le 0 ]]; then echo -e "S:$currentPlayerSTR A:$currentPlayerAGI I:N/A    | Your  HP: $currentPlayerHP/$maxPlayerHP | Your DMG: $currentPlayerMINDMG - $currentPlayerMAXDMG | LVL: $playerLevel | EXP: $playerEXP/$nextLvlEXP | G: $playerGold | STAT: $playerStatusColor$playerStatus\E[37;40m ($playerStatusColor$numberOfStatusTurns\E[37;40m turn(s) left)" 
             //else echo -e "S:$currentPlayerSTR A:$currentPlayerAGI I:N/A    | Your  HP: $currentPlayerHP/$maxPlayerHP | Your DMG: $currentPlayerMINDMG - $currentPlayerMAXDMG | G: $playerGold | STAT: $playerStatusColor$playerStatus\E[37;40m | EXP: $playerEXP/$nextLvlEXP | LVL: $playerLevel" 
             //fi
