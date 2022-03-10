@@ -183,6 +183,58 @@ namespace Teal_Way_RPG
             Clear();
             return result.ToString();
         }
+
+        public static bool TryCatch(string methodSignature, object obj)
+        {
+            int result = 0;
+            var type = obj.GetType();
+            switch (type.ToString())
+            {
+                case "System.Int32":
+                    try
+                    {
+                        Convert.ToInt32(obj);
+                    }
+                    catch
+                    {
+                        CW("Method \"" + methodSignature + "\" tried to parse to Int32 object \"" + obj + $"\", but it wasn't {type} type.");
+                        CR();
+                        result = 1;
+                    }
+                    break;
+                case "System.String":
+                    try
+                    {
+                        obj.ToString();
+                    }
+                    catch
+                    {
+                        CW("Method \"" + methodSignature + "\" tried to parse to String object \"" + obj + $"\", but it wasn't {type} type.");
+                        CR();
+                        result = 1;
+                    }
+                    break;
+                case "System.Char":
+                    try
+                    {
+                        Char.Parse(obj.ToString());
+                    }
+                    catch
+                    {
+                        CW("Method \"" + methodSignature + "\" tried to parse to Char object \"" + obj + $"\", but it wasn't {type} type.");
+                        CR();
+                        result = 1;
+                    }
+                    break;
+            }
+
+            if (result == 0)
+            {
+                return false;
+            }
+            
+            return true;
+        }
     }
 
     public class UtilsExtra : Utils

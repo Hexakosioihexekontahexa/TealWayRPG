@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Teal_Way_RPG.GameData;
+using Teal_Way_RPG.GameData.ArtifactData;
+using Teal_Way_RPG.GameData.QuestData;
 using static Teal_Way_RPG.Utils;
 
 namespace Teal_Way_RPG.GeneralData
@@ -64,6 +66,7 @@ namespace Teal_Way_RPG.GeneralData
             SlotGem = false;
             #endregion
             IsShopUnlocked = false;
+
 
             //ArtifactProcessor.PhantasmesRandomizer();
             CharacterCreator();

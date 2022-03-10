@@ -12,7 +12,7 @@ namespace Teal_Way_RPG
 {
     public class Launcher
     {
-        public static string GameVersion = "1.9.10";
+        public static string GameVersion = "1.0.0";
         public static bool DebugVar = false;
 
         public static void Main(string[] args)
@@ -33,9 +33,9 @@ namespace Teal_Way_RPG
             ////Sleep(1);
             ////CW("Please, press any key to continue...");
             ////CR();
-            Test(1);
-            //Initializer.Initialize();
-            //MainMenu.Menu(false);
+            //Test(1);
+            Initializer.Initialize();
+            MainMenu.Menu(false);
             //NewGame;
         }
 
@@ -99,10 +99,13 @@ namespace Teal_Way_RPG
                     //Question();
                     //Question();
                 //}
+                
+                
+
                 StringBuilder text = new StringBuilder("some text");
 
                 text = new StringBuilder("another text");
-                NewGame.Starter();
+                //NewGame.Starter();
 
                 for (int i = 0; i < 15; i++)
                 {
@@ -113,6 +116,12 @@ namespace Teal_Way_RPG
 
                 CW("WARNING!!!");
                 CR();
+
+
+                //TryCatch(123);
+                //TryCatch("pisun0");
+                //TryCatch('a');
+                //TryCatch(CR());
             }
         }
 
@@ -135,7 +144,26 @@ namespace Teal_Way_RPG
             CR();
         }
 
-        static int[] TestExec(int[] list)
+        //public static void TryCatch(object obj)
+        //{
+        //    var type = obj.GetType();
+        //    CW(type.ToString());
+        //    //try
+        //    //{
+        //    //    switch (type)
+        //    //    {
+        //    //            Console.WriteLine(type);
+        //    //            break;
+        //    //    }
+        //    //}
+        //    //catch
+        //    //{
+        //    //    Console.WriteLine("You suck!");
+        //    //}
+        //}
+
+
+static int[] TestExec(int[] list)
         {
             list[0] = A;
             list[1] = B;
@@ -149,24 +177,17 @@ namespace Teal_Way_RPG
     {
         public static void Initialize()
         {
-            //new Thread(EffectProcessor.EffectInitializer);
-            ////EffectProcessor.ProcessEffectText("venom");
-            //new Thread(RarityProcessor.RarityInitializer);
-            //new Thread(CurrencyProcessor.CurrencyInitializer);
-            //new Thread(MonsterProcessor.MonsterInitializer);
-            ////MonsterProcessor.RandomizeMonster("tuvale");
-            //new Thread(ArtifactProcessor.ArtifactInitializer);
-            //new Thread(PotionProcessor.PotionInitializer);
-            //new Thread(TownProcessor.TownInitializer);
-            //new Thread(LocationProcessor.LocationInitializer);
-            EffectProcessor.EffectInitializer();
+            ArtifactProcessor.ArtifactInitializer();
+            //ArtifactProcessor.PhantasmesRandomizer();
             RarityProcessor.RarityInitializer();
             CurrencyProcessor.CurrencyInitializer();
-            MonsterProcessor.MonsterInitializer();
-            ArtifactProcessor.ArtifactInitializer();
-            PotionProcessor.PotionInitializer();
-            TownProcessor.TownInitializer();
+            DungeonProcessor.DungeonInitializer();
+            EffectProcessor.EffectInitializer();
             LocationProcessor.LocationInitializer();
+            MonsterProcessor.MonsterInitializer();
+            PotionProcessor.PotionInitializer();
+            //QuestProcessor.PlotQuestInitializer();
+            TownProcessor.TownInitializer();
         }
     }
 }

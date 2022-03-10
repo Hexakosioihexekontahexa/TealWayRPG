@@ -83,7 +83,9 @@ namespace Teal_Way_RPG.GameData
                     return currency;
             }
 
-            throw new Exception($"Unknown CurrencyId:{currencyId} was transferred!");
+            //throw new Exception($"Unknown CurrencyId:{currencyId} was transferred!");
+            Utils.TryCatch("GameData.Currencies.GetCurrencyById", currencyId);
+            return DefaultCurrency;
         }
 
         public static Currency GetCurrencyByName(string currencyName)
@@ -95,6 +97,7 @@ namespace Teal_Way_RPG.GameData
             }
 
             //throw new Exception($"Unknown CurrencyName:{currencyName} was transferred!");
+            Utils.TryCatch("GameData.Currencies.GetCurrencyByName", currencyName);
             return DefaultCurrency;
         }
     }

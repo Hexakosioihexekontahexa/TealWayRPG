@@ -34,35 +34,42 @@ namespace Teal_Way_RPG.GeneralData
                         CW("--------------------");
                         CW("Please, enter register-free id (Game Data EveryList is shown below):");
                         CW(">>>");
-                        CW($"{"Arts",5}{"Curs",10}{"Effs",9}{"Locs",10}{"Mons",10}{"Pots",11}{"Twns",8}");
+                        CW($"{"Arts",5}{"Curs",8}{"Effs",8}{"Locs",8}{"Mons",9}{"Pots",10}{"Twns",7}");
                         //CW(Environment.NewLine);
                         //CW("text");
                         var iterator = UtilsExtra.GetMostElementsNumber();
                         for (var i = 0; i < iterator; i++)
                         {
                             CW($"{UtilsExtra.TryParseStringList(Artifacts.ArtifactIdList, i, Artifact.BaseIdFormat),5}" +
-                                    $"{UtilsExtra.TryParseStringList(Currencies.CurrencyIdList, i, Currency.BaseIdFormat),9}" +
-                                    $"{UtilsExtra.TryParseStringList(Effects.EffectIdList, i, Effect.BaseIdFormat),10}" +
-                                    $"{UtilsExtra.TryParseStringList(Locations.LocationIdList, i, Location.BaseIdFormat),9}" +
-                                    $"{UtilsExtra.TryParseStringList(Monsters.MonsterIdList , i, Monster.BaseIdFormat),12}" +
-                                    $"{UtilsExtra.TryParseStringList(Potions.PotionIdList, i, Potion.BaseIdFormat),9}" +
-                                    $"{UtilsExtra.TryParseStringList(Towns.TownIdList, i, Town.BaseIdFormat),9}");
+                                    $"{UtilsExtra.TryParseStringList(Currencies.CurrencyIdList, i, Currency.BaseIdFormat),7}" +
+                                    $"{UtilsExtra.TryParseStringList(Effects.EffectIdList, i, Effect.BaseIdFormat),9}" +
+                                    $"{UtilsExtra.TryParseStringList(Locations.LocationIdList, i, Location.BaseIdFormat),7}" +
+                                    $"{UtilsExtra.TryParseStringList(Monsters.MonsterIdList , i, Monster.BaseIdFormat),11}" +
+                                    $"{UtilsExtra.TryParseStringList(Potions.PotionIdList, i, Potion.BaseIdFormat),8}" +
+                                    $"{UtilsExtra.TryParseStringList(Towns.TownIdList, i, Town.BaseIdFormat),8}");
                             //Console.WriteLine(Environment.NewLine + "{0,5}", id);
                         }
                         Cw(">>>");
+                        CWL("0. Back to Main Menu");
                         CWL("Awaiting input...: ");
                         input = CR();
+                        if (input == "0") break;
                         var charIdentifier = "";
                         var isLocked = false;
                         var pos = 0;
-                        while (!char.IsLetter(input[pos]))
-                        {
-                            ++pos;
-                        }
+                        var inputLength = input.ToCharArray().Length;
+                        
+                        //while (pos < inputLength && !char.IsLetter(input[pos]))
+                        //{
+                        //    ++pos;
+                        //}
                         do
                         {
+                            //pos = 0;
                             try
                             {
+                                if (inputLength == 4) pos = 2;
+                                if (inputLength > 4) pos = 3;
                                 charIdentifier = input[pos].ToString();
                                 isLocked = false;
                             }
@@ -72,10 +79,12 @@ namespace Teal_Way_RPG.GeneralData
                                 CW("Unexpected id passed, please try again!");
                                 CWL("Awaiting input...: ");
                                 input = CR();
-                                while (!char.IsLetter(input[pos]))
-                                {
-                                    ++pos;
-                                }
+                                inputLength = input.ToCharArray().Length;
+                                //while (pos < inputLength && !char.IsLetter(input[pos]))
+                                //{
+                                //    ++pos;
+                                //}
+
                             }
                         } while (isLocked);
                         
@@ -367,10 +376,6 @@ namespace Teal_Way_RPG.GeneralData
                                 CWL(DataCloser(dataCloser.Length));
                                 CWL("Press any key to go back...");
                                 CK();
-                                break;
-
-                            case "0":
-                                locker = false;
                                 break;
 
                             default:
