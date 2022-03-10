@@ -132,6 +132,17 @@ namespace Teal_Way_RPG.GameData
             10, 
             "townRelated",
             "10% discount on shop prices!");
+
+        public static Effect Wild10Effect = new Effect(
+            2,
+            "011EDP",
+            "monster_dmg_mult",
+            "Monster Damage Multiplier",
+            "Damage Multiplier",
+            10,
+            "dungeonRelated",
+            "Monsters deal 10% more damage."
+            );
         #endregion
 
         public static List<Effect> EffectList = new List<Effect>();
