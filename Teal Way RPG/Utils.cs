@@ -71,11 +71,19 @@ namespace Teal_Way_RPG
         }
 
         /// <summary>
-        /// Places empty line with line break
+        /// Places empty line with line break. Based on CW.
         /// </summary>
         public static void CWE()
         {
             CW("");
+        }
+
+        /// <summary>
+        /// Writes dummy text 'Press any key'. Based on CW.
+        /// </summary>
+        public static void PKC()
+        {
+            CW("Press any key to continue...");
         }
 
         /// <summary>
