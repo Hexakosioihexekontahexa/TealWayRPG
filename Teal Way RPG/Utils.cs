@@ -84,6 +84,16 @@ namespace Teal_Way_RPG
         public static void PKC()
         {
             CW("Press any key to continue...");
+            CR();
+        }
+
+        /// <summary>
+        /// PKC overload. Writes specified text. Based on CW.
+        /// </summary>
+        public static void PKC(string customText)
+        {
+            CW(customText);
+            CR();
         }
 
         /// <summary>
