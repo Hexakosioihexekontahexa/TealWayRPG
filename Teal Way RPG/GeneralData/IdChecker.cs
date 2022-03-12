@@ -736,7 +736,7 @@ namespace Teal_Way_RPG.GeneralData
                             default:
                                 CWE();
                                 CWL("Unexpected id passed, please try again!");
-                                CR();
+                                PKC();
                                 break;
                         }
 
