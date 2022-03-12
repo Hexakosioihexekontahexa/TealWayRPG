@@ -71,6 +71,22 @@ namespace Teal_Way_RPG
         }
 
         /// <summary>
+        /// Places empty line with line break. Based on CW.
+        /// </summary>
+        public static void CWE()
+        {
+            CW("");
+        }
+
+        /// <summary>
+        /// Writes dummy text 'Press any key'. Based on CW.
+        /// </summary>
+        public static void PKC()
+        {
+            CW("Press any key to continue...");
+        }
+
+        /// <summary>
         /// Clears console
         /// </summary>
         public static void Clear()
@@ -198,7 +214,11 @@ namespace Teal_Way_RPG
                     catch
                     {
                         CW("Method \"" + methodSignature + "\" tried to parse to Int32 object \"" + obj + $"\", but it wasn't {type} type.");
+                        CW("It was intended that type has to be another type.");
+                        CW("This is a debug message. Nothing was lost, but consider it as a warning.");
+                        CWL("Press any key to acknowledge this message and continue...");
                         CR();
+                        Clear();
                         result = 1;
                     }
                     break;
@@ -210,7 +230,11 @@ namespace Teal_Way_RPG
                     catch
                     {
                         CW("Method \"" + methodSignature + "\" tried to parse to String object \"" + obj + $"\", but it wasn't {type} type.");
+                        CW("It was intended that type has to be another type.");
+                        CW("This is a debug message. Nothing was lost, but consider it as a warning.");
+                        CWL("Press any key to acknowledge this message and continue...");
                         CR();
+                        Clear();
                         result = 1;
                     }
                     break;
@@ -222,7 +246,11 @@ namespace Teal_Way_RPG
                     catch
                     {
                         CW("Method \"" + methodSignature + "\" tried to parse to Char object \"" + obj + $"\", but it wasn't {type} type.");
+                        CW("It was intended that type has to be another type.");
+                        CW("This is a debug message. Nothing was lost, but consider it as a warning.");
+                        CWL("Press any key to acknowledge this message and continue...");
                         CR();
+                        Clear();
                         result = 1;
                     }
                     break;
