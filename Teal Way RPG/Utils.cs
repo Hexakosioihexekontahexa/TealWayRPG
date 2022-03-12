@@ -88,6 +88,15 @@ namespace Teal_Way_RPG
         }
 
         /// <summary>
+        /// PKC overload. Writes specified text. Based on CW.
+        /// </summary>
+        public static void PKC(string customText)
+        {
+            CW(customText);
+            CR();
+        }
+
+        /// <summary>
         /// Clears console
         /// </summary>
         public static void Clear()
