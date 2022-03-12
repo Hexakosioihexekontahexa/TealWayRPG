@@ -84,6 +84,7 @@ namespace Teal_Way_RPG
         public static void PKC()
         {
             CW("Press any key to continue...");
+            CR();
         }
 
         /// <summary>
