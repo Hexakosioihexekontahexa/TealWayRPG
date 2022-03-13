@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using Teal_Way_RPG.GameData;
@@ -10,7 +9,7 @@ namespace Teal_Way_RPG
 {
     public class Utils
     {
-        private static Random random = new Random();
+        private static readonly Random Random = new Random();
         public static ConsoleColor DefaultForeColor = ConsoleColor.Gray;
         public static ConsoleColor DefaultBackColor = ConsoleColor.Black;
         public static object Text;
@@ -117,12 +116,12 @@ namespace Teal_Way_RPG
 
         public static int GetRandom(int max)
         {
-            return random.Next(max);
+            return Random.Next(max);
         }
 
         public static int GetRandom(int min, int max)
         {
-            return random.Next(min, max);
+            return Random.Next(min, max);
         }
 
         public static void SetColorsToDefault()
@@ -150,11 +149,8 @@ namespace Teal_Way_RPG
                 boolean = false;
                 return boolean;
             }
-            else
-            {
-                boolean = true;
-                return boolean;
-            }
+            boolean = true;
+            return boolean;
         }
 
         public static string StringTypeCutter(string @string, char delimiter)
@@ -165,13 +161,10 @@ namespace Teal_Way_RPG
 
         public static string DataCloser(int symbolNumber)
         {
-            string lineCloser = "-";
-            //Cw("-");
+            var lineCloser = "-";
             for (var i = 0; i < symbolNumber - 1; i++)
             {
-                //Cw("-");
-                //lineCloser = lineCloser.Insert(i, lineCloser);
-                lineCloser = lineCloser + "-";
+                lineCloser += "-";
             }
 
             return lineCloser;
@@ -188,21 +181,14 @@ namespace Teal_Way_RPG
         /// </summary>
         /// <param name="textAsObject">Custom object-wrapped message of choice. Wrap will be auto-deconstructed.</param>
         /// <param name="keys">Valid keys of choice.</param>
-        /// <returns></returns>
         public static string WrongInput(object textAsObject, params object[] keys)
         {
-            //int iterator = 0;
             StringBuilder result;
             do
             {
-                //if (iterator > 0)
-                //{
-                //    Input = UtilsExtra.WrongInputParser(textAsObject.ToString(), keys).Item2;
-                //}
                 Clear();
                 CW("Wrong input detected. Please, try again!");
                 CKL();
-                //iterator = 1;
                 result = SB(UtilsExtra.WrongInputParser(textAsObject.ToString(), keys));
             } while (result.ToString() == "");
 
@@ -212,7 +198,8 @@ namespace Teal_Way_RPG
 
         public static bool TryCatch(string methodSignature, object obj)
         {
-            int result = 0;
+            var result = 0;
+            // consider wrapping type result with StringTypeCutter
             var type = obj.GetType();
             switch (type.ToString())
             {
@@ -320,19 +307,15 @@ namespace Teal_Way_RPG
 
         public static string TryParseStringList(List<string> list, int iterator, string baseIdFormat = "")
         {
-            var output = "";
-            //for (var i = 0; i < iterator; i++)
-            //{
-                try
-                {
-                    output = list[iterator];
-                }
-                catch
-                {
-                    return DataCloser(baseIdFormat.Length);
+            string output;
+            try
+            {
+                output = list[iterator];
             }
-            //}
-
+            catch
+            {
+                return DataCloser(baseIdFormat.Length);
+            }
             return output;
         }
 
@@ -341,11 +324,7 @@ namespace Teal_Way_RPG
             Clear();
             CW(text);
             Input = CKL();
-            if (keys.Any(key => Input.ToString() == key.ToString()))
-            {
-                return Input.ToString();
-            }
-            return "";
+            return keys.Any(key => Input.ToString() == key.ToString()) ? Input.ToString() : "";
         }
     }
 }
