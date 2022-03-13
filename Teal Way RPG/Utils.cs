@@ -84,7 +84,7 @@ namespace Teal_Way_RPG
         public static void PKC()
         {
             CW("Press any key to continue...");
-            CR();
+            CK();
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Teal_Way_RPG
         public static void PKC(string customText)
         {
             CW(customText);
-            CR();
+            CK();
         }
 
         /// <summary>
