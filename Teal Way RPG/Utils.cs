@@ -297,11 +297,6 @@ namespace Teal_Way_RPG
             else
                 number = Towns.TownList.Count;
 
-            //if (number > Currencies.CurrencyList.Count) /TODO quests
-            //    DoNothing();
-            //else
-            //    number = Currencies.CurrencyList.Count;
-
             return number;
         }
 
