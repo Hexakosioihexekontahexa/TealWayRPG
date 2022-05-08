@@ -30,6 +30,7 @@ namespace Teal_Way_RPG.GameData.ArtifactData
 
     public class Rarities
     {
+        public static Rarity DefaultRarity = new Rarity(0, "00RD", "Default", 0, ConsoleColor.White);
         public static Rarity Common = new Rarity(1, "01RC", "Common", 0, ConsoleColor.White);
         public static Rarity Uncommon = new Rarity(2, "02RU", "Uncommon", 1, ConsoleColor.Cyan);
         public static Rarity Rare = new Rarity(3, "03RR", "Rare", 2, ConsoleColor.Blue);
@@ -62,7 +63,8 @@ namespace Teal_Way_RPG.GameData.ArtifactData
                     return rarity;
             }
 
-            throw new Exception($"Unknown RarityId:{rarityId} was transferred!");
+            //throw new Exception($"Unknown RarityId:{rarityId} was transferred!");
+            return DefaultRarity;
         }
 
         public static Rarity GetRarityByName(string rarityName)
@@ -73,7 +75,8 @@ namespace Teal_Way_RPG.GameData.ArtifactData
                     return rarity;
             }
 
-            throw new Exception($"Unknown RarityName:{rarityName} was transferred!");
+            //throw new Exception($"Unknown RarityId:{rarityId} was transferred!");
+            return DefaultRarity;
         }
     }
 
