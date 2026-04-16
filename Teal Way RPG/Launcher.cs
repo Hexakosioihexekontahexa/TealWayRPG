@@ -38,6 +38,7 @@ namespace Teal_Way_RPG
             ////CR();
             //Test(1);
             Initializer.Initialize();
+            Options.LoadOptions();
             MainMenu.Menu(false);
             //NewGame;
         }

@@ -24,7 +24,10 @@ namespace Teal_Way_RPG.GeneralData
                 PKC("Press any key to start a new life...");
             }
 
-            SaveLoad.DeleteSaveFile();
+            if (Options.DeleteSaveOnDeath)
+            {
+                SaveLoad.DeleteSaveFile();
+            }
             NewGame.ResetCurrentProgress();
             Battle.RequestExitToMainMenu();
         }

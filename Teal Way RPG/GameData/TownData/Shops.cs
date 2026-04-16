@@ -50,8 +50,8 @@ namespace Teal_Way_RPG.GameData.TownData
                 }
 
                 CW("b. Back to town");
-                var input = CR();
-                if (input == "b")
+                var input = CKL();
+                if (input is "b" or "и")
                 {
                     return;
                 }
@@ -145,10 +145,20 @@ namespace Teal_Way_RPG.GameData.TownData
                     Inventory.AddArtifact(artifact);
                     Clear();
                     CW($"{artifact.ArtifactName} added to inventory.");
+                    CW("Equip it now? [y/n]");
+                    switch (CKL())
+                    {
+                        case "y":
+                        case "н":
+                            Clear();
+                            Inventory.ToggleEquip(artifact, out var message);
+                            CW(message);
+                            break;
+                        case "n":
+                        case "т":
+                            break;
+                    }
                     PKC();
-                    return;
-                case "n":
-                case "т":
                     return;
                 default:
                     return;
@@ -178,9 +188,6 @@ namespace Teal_Way_RPG.GameData.TownData
                     Clear();
                     CW($"{potion.PotionName} added to inventory.");
                     PKC();
-                    return;
-                case "n":
-                case "т":
                     return;
                 default:
                     return;
