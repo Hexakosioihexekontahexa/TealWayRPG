@@ -72,7 +72,7 @@ namespace Teal_Way_RPG.GameData
             Rarities.Common, 
             50, 
             Currencies.Gold,
-            "slotHands",
+            "slotArms",
             Effects.AdditionalAttackBonusEffect,
             Effects.SetEffectImpactPoints(AtkAddBonus, 1),
             Effects.SetEffectImpactType(AtkAddBonus, "passive"));

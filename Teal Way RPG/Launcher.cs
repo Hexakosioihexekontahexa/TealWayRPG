@@ -12,7 +12,10 @@ namespace Teal_Way_RPG
 {
     public class Launcher
     {
-        public static string GameVersion = "1.0.0";
+        public const int GameVersionMajor = 1;
+        public const int GameVersionMinor = 1;
+        public static string GameVersion = $"{GameVersionMajor}.{GameVersionMinor}.{typeof(Launcher).Assembly.GetName().Version?.Build ?? 0}";
+        
         public static bool DebugVar = false;
 
         public static void Main(string[] args)
@@ -132,9 +135,11 @@ namespace Teal_Way_RPG
             switch (CKL())
             {
                 case "q":
+                case "й":
                     CWL("good job");
                     break;
                 case "e":
+                case "у":
                     CWL("Very nice of you!");
                     break;
                 default:

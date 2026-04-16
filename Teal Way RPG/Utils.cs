@@ -12,7 +12,7 @@ namespace Teal_Way_RPG
         private static readonly Random Random = new Random();
         public static ConsoleColor DefaultForeColor = ConsoleColor.Gray;
         public static ConsoleColor DefaultBackColor = ConsoleColor.Black;
-        public static object Text;
+        public static object text;
         public static object Input;
 
         /// <summary>
@@ -172,6 +172,7 @@ namespace Teal_Way_RPG
 
         public static void WrongInput()
         {
+            Clear();
             CW("Wrong input detected. Please, try again!");
             CR();
         }

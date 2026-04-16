@@ -2,12 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Teal_Way_RPG</RootNamespace>
+    <Version>1.0.$(BuildNum)</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="AddOnData\AddOn01\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JJ.AutoIncrementVersion" Version="4.3.5802" />
   </ItemGroup>
 
 </Project>

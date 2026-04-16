@@ -8,36 +8,43 @@ namespace Teal_Way_RPG.GeneralData
 {
     public class Options : Menus
     {
+        public static bool IsShopUnlocked = false;
         public delegate void VoidString(bool boolean);
         private static VoidString voidString = OptionStateChecker;
-        
+
         public static void Menu()
         {
-            Clear();
-            CW("Options");
-            Cw("-----");
-            VoidStringConcat("1. Debug mode - [", voidString, Launcher.DebugVar, "]");
-            VoidStringConcat("2. Ingame Id checker - [", voidString, MainMenu.IsIdCheckerEnabled, "]");
-            CWL("0. Back");
-            var input = CK();
-            switch (input)
+            while (true)
             {
-                case "0":
-                    break;
-                case "1":
-                    BoolReverser(ref Launcher.DebugVar);
-                    Menu(); 
-                    break;
-                case "2":
-                    BoolReverser(ref MainMenu.IsIdCheckerEnabled);
-                    Menu();
-                    break;
-                default:
-                    Clear();
-                    CW("Wrong input detected! Please try again!");
-                    CK();
-                    Menu();
-                    break;
+                Clear();
+                CW("Options");
+                Cw("-----");
+                VoidStringConcat("1. Debug mode - [", voidString, Launcher.DebugVar, "]");
+                VoidStringConcat("2. Ingame Id checker - [", voidString, MainMenu.IsIdCheckerEnabled, "]");
+                VoidStringConcat("3. Shop available - [", voidString, IsShopUnlocked, "]");
+                CWL("0. Back");
+                var input = CK();
+                switch (input)
+                {
+                    case "0":
+                        break;
+                    case "1":
+                        BoolReverser(ref Launcher.DebugVar);
+                        continue;
+                    case "2":
+                        BoolReverser(ref MainMenu.IsIdCheckerEnabled);
+                        continue;
+                    case "3":
+                        BoolReverser(ref IsShopUnlocked);
+                        continue;
+                    default:
+                        Clear();
+                        CW("Wrong input detected! Please try again!");
+                        CK();
+                        continue;
+                }
+
+                break;
             }
         }
 

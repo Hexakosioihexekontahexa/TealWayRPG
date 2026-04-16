@@ -14,57 +14,81 @@ namespace Teal_Way_RPG.GeneralData
         {
             while (true)
             {
-                Clear();
+                var hasCurrentGame = NewGame.PlayerLevel > 0;
+                var hasSaveFile = SaveLoad.HasSaveFile();
+                var canContinue = hasCurrentGame || hasSaveFile;
 
-                if (debugVar)
-                {
-                    DebugMenu(new Dictionary<string, object> {{"Game version: ", Launcher.GameVersion}});
-                }
+                Clear();
 
                 SetColorsTo(ConsoleColor.Black, ConsoleColor.Cyan);
                 Cw("Teal Way");
                 SetColorsToDefault();
                 Cw(" ");
                 SetColorsTo(ConsoleColor.DarkYellow);
-                CW("RPG");
+                Cw("RPG");
                 SetColorsToDefault();
+                CW($" - {Launcher.GameVersion}");
                 CW("============");
-                CW("1. Start New Game");
-                CW("2. Options");
-                CW("3. Exit");
-                if (IsIdCheckerEnabled) CW("0. Id Checker");
-                var input = Console.ReadKey().KeyChar.ToString();
+                if (canContinue) CW("c. Continue");
+                CW("n. Start New Game");
+                CW("o. Options");
+                CW("e. Exit");
+                
+                if (IsIdCheckerEnabled) CW("i. Id Checker");
+
+                var input = CKL();
                 switch (input)
                 {
                     case "0":
-                        if (IsIdCheckerEnabled)
+                    case "1":
+                    case "c":
+                    case "с":
+                        if (!canContinue)
                         {
-                            IdChecker.Opener();
-                            break;
-                        }
-                        else
-                        {
-                            Clear();
-                            CW("Wrong input detected. Please, try again!");
-                            CR();
-                            Menu(debugVar);
+                            WrongInput();
                             break;
                         }
 
-                    case "1":
-                        NewGame.Starter();
+                        if (!hasCurrentGame && hasSaveFile)
+                        {
+                            SaveLoad.Load();
+                        }
+
                         GameMenu.Menu(debugVar, Towns.GoldenleafTown00);
                         break;
                     case "2":
-                        Options.Menu();
+                    case "n":
+                    case "т":
+                        NewGame.Starter();
+                        GameMenu.Menu(debugVar, Towns.GoldenleafTown00);
                         break;
                     case "3":
+                    case "o":
+                    case "щ":
+                        Options.Menu();
+                        break;
+                    case "e":
+                    case "у":
+                        if (hasCurrentGame)
+                        {
+                            SaveLoad.SaveSilent();
+                        }
                         Environment.Exit(0);
                         break;
+                    case "9":
+                    case "i":
+                    case "ш":
+                        if (IsIdCheckerEnabled)
+                        {
+                            IdChecker.Opener();
+                        }
+                        else
+                        {
+                            WrongInput();
+                        }
+                        break;
                     default:
-                        Clear();
-                        CW("Wrong input detected. Please, try again!");
-                        CR();
+                        WrongInput();
                         break;
                 }
             }
